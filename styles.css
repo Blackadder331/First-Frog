@@ -1,0 +1,633 @@
+@font-face {
+    font-family: "NeueMontreal";
+    src: url(./fonts/NeueMontreal-Regular.otf);
+}
+
+@font-face {
+    font-family: "NeueMontreal-Bold";
+    src: url(./fonts/NeueMontreal-Bold.otf);
+}
+
+:root {
+    --color-background: #000000;
+    --color-text: #f1f1f1;
+    --color-chill: #f1f1f1;
+    --marquee-font-size: min(max(12px, 2vw), 22px);
+    --headline-font-size: min(max(40px, 10vw), 90px);
+    --paragraph-font-size: min(max(16px, 5vw), 27px);
+    --section-heading-font-size: min(max(30px, 7vw), 60px);
+    --duration: 300ms;
+    --ease: cubic-bezier(0.33, 1, 0.68, 1);
+    
+  }
+
+.logo{
+    padding-top: 5rem;
+    cursor: pointer;
+} 
+
+h5 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 2;
+    margin-top: -25px !important;
+}
+
+* {
+    box-sizing: border-box;
+    
+}
+  
+.quote{
+    hanging-punctuation: first !important;
+    text-indent: -.5rem;
+}
+
+.marquee--top {
+    font-size: 0.25rem;
+}
+  
+  #start-app-headlines{
+    margin-top: 12rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    font-family: "NeueMontreal", sans-serif;
+    color: var(--color-text);
+    width: 100%;
+    transition: background-color var(--duration) var(--ease);
+  }
+  
+  .page-content {
+    max-width: 90ch;
+    padding: 5rem;
+    margin: 8rem auto;
+  }
+  .page-content * + * {
+    margin-top: 2.5rem;
+  }
+  .page-content a {
+    color: var(--color-chill);
+  }
+  .page-content h1 {
+    font-size: var(--headline-font-size);
+    font-weight: 100;
+    line-height: 1.1;
+  }
+  .page-content h2 {
+    margin-top: 8rem;
+    font-size: var(--section-heading-font-size);
+    font-weight: 100;
+    line-height: 1.1;
+  }
+  .page-content em {
+    font-style: italic;
+  }
+  .page-content p {
+    font-size: var(--paragraph-font-size);
+    line-height: 1.75;
+    letter-spacing: 0.0125rem;
+    margin-top: 3rem;
+  }
+  
+  .page-content__section {
+    transition: opacity var(--duration) var(--ease);
+  }
+  .page-content__section h2 {
+    transform-origin: 50% 100%;
+  }
+  
+  .page-content__section.active {
+    opacity: 1;
+  }
+  .page-content__section.active h2 {
+    -webkit-animation: activate calc(var(--duration) * 2) var(--ease) forwards;
+            animation: activate calc(var(--duration) * 2) var(--ease) forwards;
+  }
+  @-webkit-keyframes activate {
+    25% {
+      color: var(--color-chill);
+      transform: translateY(0px);
+    }
+    40% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    60% {
+      color: var(--color-text);
+      transform: translateY (0px);
+    }
+    65%, 100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes activate {
+    25% {
+      color: var(--color-chill);
+      transform: translateY(0px);
+    }
+    40% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    60% {
+      color: var(--color-text);
+      transform: translateY(0px);
+    }
+    65%, 100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .page-content__section.active h2 {
+      -webkit-animation: none;
+              animation: none;
+    }
+  }
+  
+  .marquee-container {
+    position: fixed;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-weight: 700;
+    font-family: "NeueMontreal-Bold", sans-serif;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+  
+  .marquee {
+    position: absolute;
+    font-size: var(--marquee-font-size);
+    line-height: 1;
+    white-space: nowrap;
+    letter-spacing: 0.25rem;
+    overflow: hidden;
+    padding: 2vmin 0;
+    min-width: 100%;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background-color: var(--color-background);
+    box-shadow: var(--color-background) 0 2vmin 2vmin 1vmin;
+    transition: background-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+  }
+  .marquee--top {
+    top: -1px;
+  }
+  .marquee--left {
+    left: -1px;
+    bottom: -6vmin;
+    transform: rotate(-0.25turn);
+    transform-origin: 0 0;
+  }
+  .marquee--right {
+    left: calc(100% + 1px);
+    top: 0;
+    transform: rotate(0.25turn);
+    transform-origin: 0 0;
+  }
+  .marquee--bottom {
+    bottom: -1px;
+    right: 0;
+    transform: rotate(0.5turn);
+  }
+  .marquee div {
+    opacity: 1;
+    transition: opacity var(--duration) var(--ease);
+  }
+  .marquee div.active {
+    opacity: 0;
+  }
+  
+  .marquee-container .marquee {
+    font-size: 0.8rem !important;
+  }
+
+.spinner-container{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: row;
+    padding-top: 15vh;
+    padding-bottom: 10vh;
+}
+
+.froglin-spinner {
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    animation: spin 20s linear infinite;
+    cursor: pointer;
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid #f1f1f1;
+    width: 100%;
+}
+
+.person, .person-2{
+    margin-top: 1.5rem !important
+}
+
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+button {
+    height: 3rem;
+    width: 3rem;
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+    padding: 0px;
+    margin-top: 1.2rem !important;
+}
+
+button img {
+    height: 3rem;
+    object-fit: contain;
+    object-position: center;
+    cursor: pointer;
+}
+button img:hover {
+    opacity: .5;
+    animation-duration: .5s var(--ease);
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-col-left{
+    width: 65%;
+}
+
+.input-col-center{
+    max-width: 50%;
+    margin-top: 0px !important;
+    padding-top: 0px !important;;
+}
+
+
+  /* Label moves below field */
+  .input-field {
+      position: relative;
+    }
+    .input-field input {
+        padding-bottom: .5rem;
+        padding-top: 1.5em;
+        background: transparent;
+        color: #f1f1f1;
+    }
+    .input-field label {
+      position: absolute;
+      top: -2rem;
+      left: .5rem;
+      pointer-events: none;
+      transition: all 0.2s ease-out;
+    }
+    .input-field input:focus + label,
+    .input-field input:not(:placeholder-shown) + label {
+      transform: translateY(2.75rem);
+      font-size: .8rem;
+    }
+
+    input:focus {
+        border: none;
+        border-bottom: 2px solid #f1f1f1;
+        outline: none;
+        
+    }
+
+.quote {
+    animation: fade-up 1.5s ease-out forwards;
+}
+
+.person {
+    animation: fade-up 2.5s ease-out forwards;
+}
+
+.quote-2 {
+    animation-delay: 4s !important;
+    animation: fade-up 1.5s ease-out forwards;
+    opacity: 0;
+  }
+
+.person-2 {
+    animation-delay: 5s !important;
+    animation: fade-up 2.5s ease-out forwards;
+    opacity: 0;
+}
+.headline {
+    animation: fade-up 1.5s ease-out forwards;
+}
+#add-to-do-form{
+    animation: fade-up 1.75s ease-out forwards;
+}
+#to-do-list{
+    animation: fade-up 2.5s ease-out forwards;
+}
+@keyframes fade-up {
+    0% {
+      transform: translateY(100%) translateZ(0);
+      opacity: 0;
+    }
+    60% {
+      transform: translateY(100%) translateZ(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0) translateZ(0);
+      opacity: 1;
+    }
+}
+
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 4rem;
+    width: 100%;
+
+    max-width: 90ch;
+    padding: 5rem;
+    margin: 8rem auto;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+nav .logo{
+    justify-content: space-between;
+    min-width: 20rem;
+    max-width: 28rem;
+    padding-top: 13px;
+    cursor: pointer;
+}     
+
+nav .spinner-container {
+    justify-content: space-between;
+    width: 12rem;
+    justify-content: end;
+    margin: 0px;
+    padding: 0px;
+}   
+nav .spinner-container .froglin-spinner {
+    height: auto;
+    cursor: pointer;
+}   
+
+#priority {
+    background-color: transparent;
+    color: #f1f1f1;
+    padding: 1rem .6rem 1rem 1rem;
+    padding: 0.8rem 0.6rem 1rem 1rem;
+    border-color: #f1f1f1;
+    margin-left: -1rem;
+    border-width: 1.5px
+}
+
+
+#priority:focus {
+    outline: none;
+}
+
+.app-due-date {
+    max-width: 20%;
+    padding: 0 1rem;
+    padding-left: -1rem;
+}
+
+
+.app-priority {
+    max-width: 20%;
+    padding: 0 0 0 0;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.app-button{
+    margin-top: 0rem !important;
+}
+
+#add-to-do-form{
+
+    padding-bottom: 4rem;
+}
+
+.page-content .headline {
+    margin-top: 0rem;
+}
+/* Define a CSS class for the strike through effect */
+.strike-through {
+    text-decoration: line-through;
+}
+
+#to-do-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .to-do-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    /* padding-top: 0px !important; */
+    margin-top: 0px;
+}
+  
+  .to-do-item h3 {
+    font-size: 1.5rem; /* Increase the font size of the title */
+    padding-top: 1.7rem;
+    width: 65%;
+  }
+  
+  .to-do-item p {
+    font-size: 16px; /* Decrease the font size of the description and priority */
+    text-align: center;
+    width: 15%;
+    margin-right: -2rem;
+  }
+
+  .to-do-item .priority-High {
+    color: #f1f1f1;
+    background-image: url(./images/Marker.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: .5rem;
+    background-position-x: center;
+  }
+  
+  .to-do-item .priority-Med {
+    color: #f1f1f1;
+    background-image: url(./images/Marker-Yellow.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: .5rem;
+    background-position-x: center;
+  }
+  
+  .to-do-item .priority-Low {
+    color: #f1f1f1;
+  }
+  
+.to-do-item h3 {
+    font-size: 2rem;
+    padding-top: 1.7rem;
+    width: 50%;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.app-title{
+    width: 55%;
+}
+.to-do-item p {
+    text-transform: uppercase;
+    color: #555555;
+}
+
+@media screen and (min-width: 1400px) {
+    .spinner-container{
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        flex-direction: row;
+        padding-top: 15vh;
+        padding-bottom: 5vh;
+    }
+    
+    .froglin-spinner {
+        width: 30%;
+        align-items: center;
+        justify-content: center;
+        animation: spin 20s linear infinite;
+    }
+    nav .spinner-container {
+        width: 17rem;
+    }  
+
+    nav .spinner-container .froglin-spinner {
+        height: auto;
+        cursor: pointer;
+    }  
+
+    .app-priority {
+        margin-right: 2rem;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+    .input-col-left {
+        max-width: 35%;
+    }
+
+    .input-col-center {
+        width: auto;
+    }
+
+    #priority {
+        padding: .8rem .5rem;
+    }
+    .app-priority{
+        justify-content: end;
+        display: flex;
+        width: auto;
+        margin-left: -1rem;
+    }
+
+    #add-to-do-form{
+        display: flex;
+        width: auto;
+    }
+
+    .app-due-date{
+        width: auto;
+        padding: 0;
+    }
+
+    .app-title{
+        width: auto;
+        width: auto;
+        min-width: 45% !important;
+ 
+    }
+    .to-do-item h3 {
+        font-size: 1.5rem; /* Increase the font size of the title */
+        padding-top: 1.7rem;
+        width: 50%;
+      }
+      
+    .to-do-item p {
+        font-size: 16px; /* Decrease the font size of the description and priority */
+        text-align: center;
+        width: 25%;
+        margin-right: -2rem;
+    }
+
+    nav .logo {
+        min-width: 20rem;
+        width: 100%;
+    }
+
+    nav .spinner-container {
+        width: 12rem;
+        margin-left: -5rem;
+    }
+
+    nav .froglin-spinner {
+        width: 5rem;
+        align-items: center;
+        justify-content: center;
+        animation: spin 20s linear infinite;
+        cursor: pointer;
+        padding-left: -4rem;
+    }
+
+    .app-title, .app-due-date {
+        width: fit-content;
+    }
+
+    #priority {
+        margin-left: 0rem;
+    }
+
+    .page-content .headline {
+        margin-top: -3rem;
+    }
+    .logo {
+        padding-top: 0rem;
+        
+    }
+
+    .page-content {
+        padding-top: 4rem;
+    }
+    #start-app-headlines {
+        margin-top: 0;
+        padding-top: 3rem;
+    }
+}

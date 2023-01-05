@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav>
+    <a href="./index.html"><div class="logo"><img src="./images/FF-Logo.svg"></img></div></a>
+
+    <a href="./app.html">
+        <div class="spinner-container">
+            <div class="froglin-spinner"><img src="./images/Froglin-Spinner.svg"></img></div>
+        </div>
+    </a>
+</nav>
+<main class="page-content">
+    
+
+<!-- TO DO LIST -->
+        <h2 class="headline">Start something new.</h2>
+    
+        <form id="add-to-do-form">
+            <div class="input-col-left app-title">
+                <div class="input-field ">
+                    
+                    <input type="text" id="title" required required placeholder=" ">
+                    <label for="title">TITLE</label>
+                </div>
+            </div>
+            <div class="input-col-center app-due-date">
+                <div class="input-field">
+                    <input type="text" id="description" required placeholder=" ">
+                    <label for="description">DUE DATE</label>
+                </div>
+            </div>
+            <br>
+            <div class="input-col-center app-priority">
+                <div class="input-field">
+                    <select id="priority">
+                        <option value="Low">Low</option>
+                        <option value="Med" selected>Med</option>
+                        <option value="High">High</option>
+                    </select>
+                    <label for="priority"> </label>
+                </div>
+            </div>
+            <br>
+
+            <button class="app-button"type="submit"><img src="./images/Button.svg"></img></button>
+            </form>
+        <div id="to-do-list"></div>
+
+        <a href="./index.html">
+        <div class="spinner-container">
+            <div class="froglin-spinner"><img src="./images/Froglin-Spinner.svg"></img></div>
+        </div>
+        <!-- <div id="text"></div> -->
+</main>
+
+
+
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
